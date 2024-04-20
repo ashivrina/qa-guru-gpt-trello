@@ -40,12 +40,12 @@ public class TestBase {
 
     @AfterEach
     public void tearDown() {
+        addAttachments();
         // Clean up after each test if needed
         closeWebDriver();
-        addAttachments();
     }
 
-    protected void openPage(String path) {
+    public void openPage(String path) {
         Selenide.open(path);
     }
 
