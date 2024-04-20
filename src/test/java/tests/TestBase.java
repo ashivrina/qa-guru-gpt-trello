@@ -42,6 +42,7 @@ public class TestBase {
     public void tearDown() {
         // Clean up after each test if needed
         closeWebDriver();
+        addAttachments();
     }
 
     protected void openPage(String path) {
