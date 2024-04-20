@@ -23,6 +23,8 @@ public class TestBase {
 
         // Set base URL
         Configuration.baseUrl = BASE_URL;
+
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @BeforeEach
