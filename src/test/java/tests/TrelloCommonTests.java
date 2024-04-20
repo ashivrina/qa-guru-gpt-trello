@@ -6,18 +6,12 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static tests.TestBase.EMAIL;
+import static tests.TestBase.PASSWORD;
 
 //The whole class is created by Chat GPT 3.5, but I needed to tweak the selectors a bit
 //Conversation with Chat GPT here: https://chat.openai.com/share/fb0c34b6-a6a5-4b9f-b9fb-b148cbc698b4
-public class TrelloCommonTests {
-
-    private static final String EMAIL = "annatochkag@gmail.com";
-    private static final String PASSWORD = "gjikbyf1";
-
-    @BeforeEach
-    public void setUp() {
-        open("https://trello.com/");
-    }
+public class TrelloCommonTests extends TestBase {
 
     @Test
     public void loginToTrello() {
