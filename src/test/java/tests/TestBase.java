@@ -2,9 +2,14 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+import helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.*;
 
 //TestBase created using ChatGPT: https://chat.openai.com/share/fb0c34b6-a6a5-4b9f-b9fb-b148cbc698b4
 public class TestBase {
@@ -36,10 +41,20 @@ public class TestBase {
     @AfterEach
     public void tearDown() {
         // Clean up after each test if needed
-        Selenide.closeWebDriver();
+        closeWebDriver();
     }
 
     protected void openPage(String path) {
         Selenide.open(path);
+    }
+
+    void addAttachments() {
+        if (getWebDriver() != null) {
+            Attach.screenshotAs("Last screenshot");
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+            Attach.addVideo();
+            closeWebDriver();
+        }
     }
 }
